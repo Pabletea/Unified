@@ -34,7 +34,7 @@ class ShortsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shorts, container, false)
+        return inflater.inflate(R.layout.fragment_generador, container, false)
     }
 
     companion object {

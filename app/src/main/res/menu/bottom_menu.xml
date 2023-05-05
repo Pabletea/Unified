@@ -12,8 +12,8 @@
 
     <item
         android:id="@+id/shorts"
-        android:title="Shorts"
-        android:icon="@drawable/baseline_whatshot_24"
+        android:title="Generador"
+        android:icon="@drawable/baseline_lock_reset_24"
         />
 
     <item
@@ -23,8 +23,8 @@
 
     <item
         android:id="@+id/subscriptions"
-        android:title="Generador"
-        android:icon="@drawable/baseline_lock_reset_24" />
+        android:title="Migración"
+        android:icon="@drawable/baseline_send_24" />
     <item
         android:id="@+id/library"
         android:title="Ajustes"
