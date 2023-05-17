@@ -3,15 +3,12 @@ package com.example.unified
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import com.example.unified.databinding.FragmentGeneradorBinding
 
 
@@ -34,7 +31,7 @@ class GeneradorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         clipboardManager = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        binding.contrasenaGenerada.text = generarCadenaAleatoria(20,10,4,true,true)
+        binding.contrasenaGenerada.text = generarCadenaAleatoria(20,10,4,true,true,true)
 
         binding.copiarContrasena.setOnClickListener{
 
@@ -51,14 +48,15 @@ class GeneradorFragment : Fragment() {
                 val cantidadSimbolos = 4
                 val tieneMay = binding.AZCheckBox.isChecked
                 val tieneMin = binding.azCheckBox.isChecked
+                val tieneDig = binding.numberCheckBox.isChecked
 
-                binding.contrasenaGenerada.text = generarCadenaAleatoria(longitud,cantidadDigitos,cantidadSimbolos,tieneMay,tieneMin)
+                binding.contrasenaGenerada.text = generarCadenaAleatoria(longitud,cantidadDigitos,cantidadSimbolos,tieneMay,tieneMin,tieneDig)
         }
 
 
     }
 
-    fun generarCadenaAleatoria(longitud: Int, cantidadDigitos: Int, cantidadSimbolos: Int,tieneMay: Boolean,tieneMin:Boolean): String {
+    fun generarCadenaAleatoria(longitud: Int, cantidadDigitos: Int, cantidadSimbolos: Int,tieneMay: Boolean,tieneMin:Boolean,tieneDig:Boolean): String {
         val letrasMay = ('A'..'Z')
         val letrasMin = ('a'..'z')
         val digitos = ('0'..'9')
@@ -85,10 +83,11 @@ class GeneradorFragment : Fragment() {
                 cadenaAleatoria += letrasMin.random()
             }
         }
-        repeat(cantidadDigitos) {
-            cadenaAleatoria += digitos.random()
+        if(tieneDig){
+            repeat(cantidadDigitos) {
+                cadenaAleatoria += digitos.random()
+            }
         }
-
         repeat(cantidadSimbolos) {
             cadenaAleatoria += simbolos.random()
         }
