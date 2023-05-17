@@ -88,8 +88,8 @@ class HomeActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.bottomsheetlayout)
 
         val videoLayout = dialog.findViewById<LinearLayout>(R.id.layoutVideo)
-        val shortsLayout = dialog.findViewById<LinearLayout>(R.id.layoutShorts)
-        val liveLayout = dialog.findViewById<LinearLayout>(R.id.layoutLive)
+//        val shortsLayout = dialog.findViewById<LinearLayout>(R.id.layoutShorts)
+//        val liveLayout = dialog.findViewById<LinearLayout>(R.id.layoutLive)
         val cancelButton = dialog.findViewById<ImageView>(R.id.cancelButton)
 
         videoLayout.setOnClickListener {
@@ -97,15 +97,15 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this, "Upload a Video is clicked", Toast.LENGTH_SHORT).show()
         }
 
-        shortsLayout.setOnClickListener {
-            dialog.dismiss()
-            Toast.makeText(this, "Create a short is Clicked", Toast.LENGTH_SHORT).show()
-        }
-
-        liveLayout.setOnClickListener {
-            dialog.dismiss()
-            Toast.makeText(this, "Go live is Clicked", Toast.LENGTH_SHORT).show()
-        }
+//        shortsLayout.setOnClickListener {
+//            dialog.dismiss()
+//            Toast.makeText(this, "Create a short is Clicked", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        liveLayout.setOnClickListener {
+//            dialog.dismiss()
+//            Toast.makeText(this, "Go live is Clicked", Toast.LENGTH_SHORT).show()
+//        }
 
         cancelButton.setOnClickListener {
             dialog.dismiss()
