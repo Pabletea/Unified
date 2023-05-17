@@ -34,7 +34,7 @@ class GeneradorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         clipboardManager = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        binding.contrasenaGenerada.text = generarCadenaAleatoria(20,10,4)
+        binding.contrasenaGenerada.text = generarCadenaAleatoria(20,10,4,true,true)
 
         binding.copiarContrasena.setOnClickListener{
 
@@ -44,13 +44,28 @@ class GeneradorFragment : Fragment() {
 
         }
 
+        binding.generarContrasenaBtn.setOnClickListener{
+
+                val longitud = 20
+                val cantidadDigitos = 10
+                val cantidadSimbolos = 4
+                val tieneMay = binding.AZCheckBox.isChecked
+                val tieneMin = binding.azCheckBox.isChecked
+
+                binding.contrasenaGenerada.text = generarCadenaAleatoria(longitud,cantidadDigitos,cantidadSimbolos,tieneMay,tieneMin)
+        }
+
 
     }
 
-    fun generarCadenaAleatoria(longitud: Int, cantidadDigitos: Int, cantidadSimbolos: Int): String {
-        val letras = ('a'..'z') + ('A'..'Z')
+    fun generarCadenaAleatoria(longitud: Int, cantidadDigitos: Int, cantidadSimbolos: Int,tieneMay: Boolean,tieneMin:Boolean): String {
+        val letrasMay = ('A'..'Z')
+        val letrasMin = ('a'..'z')
         val digitos = ('0'..'9')
         val simbolos = listOf('!', '@', '#', '$', '%', '&', '*','^')
+
+        //
+
 
         val totalCaracteres = cantidadDigitos + cantidadSimbolos
         val cantidadLetras = longitud - totalCaracteres
@@ -60,11 +75,16 @@ class GeneradorFragment : Fragment() {
         }
 
         var cadenaAleatoria = ""
-
-        repeat(cantidadLetras) {
-            cadenaAleatoria += letras.random()
+        if(tieneMay) {
+            repeat(cantidadLetras) {
+                cadenaAleatoria += letrasMay.random()
+            }
         }
-
+        if(tieneMin) {
+            repeat(cantidadLetras) {
+                cadenaAleatoria += letrasMin.random()
+            }
+        }
         repeat(cantidadDigitos) {
             cadenaAleatoria += digitos.random()
         }
