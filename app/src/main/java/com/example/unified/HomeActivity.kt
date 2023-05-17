@@ -62,7 +62,7 @@ class HomeActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.shorts -> replaceFragment(GeneradorFragment())
-                R.id.subscriptions -> replaceFragment(SubscriptionsFragment())
+                R.id.subscriptions -> replaceFragment(MigracionFragment())
                 R.id.library -> replaceFragment(AjustesFragment())
             }
 
