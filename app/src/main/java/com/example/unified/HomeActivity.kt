@@ -13,7 +13,6 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.unified.databinding.ActivityAnadirCuentaBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -57,6 +56,10 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
+
+
+
+
         replaceFragment(HomeFragment())
 
        bottomNavigationView.background = null
@@ -66,10 +69,10 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
 
             when (item.itemId) {
-                R.id.home -> replaceFragment(HomeFragment())
-                R.id.shorts -> replaceFragment(GeneradorFragment())
-                R.id.subscriptions -> replaceFragment(MigracionFragment())
-                R.id.library -> replaceFragment(AjustesFragment())
+                R.id.inicio -> replaceFragment(HomeFragment())
+                R.id.generador -> replaceFragment(GeneradorFragment())
+                R.id.migracion -> replaceFragment(MigracionFragment())
+                R.id.perfil -> replaceFragment(AjustesFragment())
             }
 
             true
@@ -93,12 +96,10 @@ class HomeActivity : AppCompatActivity() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.bottomsheetlayout)
 
-        val videoLayout = dialog.findViewById<LinearLayout>(R.id.layoutVideo)
-//        val shortsLayout = dialog.findViewById<LinearLayout>(R.id.layoutShorts)
-//        val liveLayout = dialog.findViewById<LinearLayout>(R.id.layoutLive)
+        val anadirServicioBtn = dialog.findViewById<LinearLayout>(R.id.layoutVideo)
         val cancelButton = dialog.findViewById<ImageView>(R.id.cancelButton)
 
-        videoLayout.setOnClickListener {
+        anadirServicioBtn.setOnClickListener {
             //Cambiar a la activity de anadir cuenta
             dialog.dismiss()
             intent = intent.setClass(this, AnadirCuentaActivity::class.java)

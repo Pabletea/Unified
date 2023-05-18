@@ -6,12 +6,12 @@
 
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/inicio"
         android:title="Inicio"
         android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/shorts"
+        android:id="@+id/generador"
         android:title="Generador"
         android:icon="@drawable/baseline_lock_reset_24"
         />
@@ -22,11 +22,11 @@
         />
 
     <item
-        android:id="@+id/subscriptions"
+        android:id="@+id/migracion"
         android:title="Migración"
         android:icon="@drawable/baseline_send_24" />
     <item
-        android:id="@+id/library"
+        android:id="@+id/perfil"
         android:title="Perfil"
         android:icon="@drawable/baseline_person_24" />
 
