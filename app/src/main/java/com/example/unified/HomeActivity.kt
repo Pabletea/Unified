@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -93,8 +92,11 @@ class HomeActivity : AppCompatActivity() {
         val cancelButton = dialog.findViewById<ImageView>(R.id.cancelButton)
 
         videoLayout.setOnClickListener {
+            //Cambiar a la activity de anadir cuenta
             dialog.dismiss()
-            Toast.makeText(this, "Upload a Video is clicked", Toast.LENGTH_SHORT).show()
+            intent = intent.setClass(this, AnadirCuentaActivity::class.java)
+            startActivity(intent)
+
         }
 
 //        shortsLayout.setOnClickListener {
