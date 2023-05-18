@@ -13,6 +13,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.example.unified.databinding.ActivityAnadirCuentaBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -22,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var fab:FloatingActionButton
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var binding: HomeActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,11 @@ class HomeActivity : AppCompatActivity() {
         var toogle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,R.string.close_nav)
         drawerLayout.addDrawerListener(toogle)
         toogle.syncState()
+
+        
+
+
+
 
 
 
@@ -98,6 +105,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
 
 //        shortsLayout.setOnClickListener {
 //            dialog.dismiss()

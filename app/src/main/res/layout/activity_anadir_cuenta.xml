@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".AnadirCuentaActivity">
 
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center|center_vertical"
+        android:text="*"
+        android:textAlignment="center"
+        android:textColor="#F44336"
+        app:layout_constraintBottom_toTopOf="@+id/nombreServiceEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="1.0" />
+
     <ImageView
         android:id="@+id/closeBtn"
         android:layout_width="wrap_content"
@@ -111,7 +126,8 @@
         android:layout_width="212dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textPassword"
+        android:text="hola"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
@@ -120,7 +136,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/makePswVisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/outline_remove_red_eye_24"
@@ -132,14 +148,14 @@
         app:layout_constraintVertical_bias="0.131" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/generatePass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/outline_replay_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.313"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/makePswVisible"
         app:layout_constraintTop_toBottomOf="@+id/userServiceEdit"
         app:layout_constraintVertical_bias="0.131" />
 
@@ -204,5 +220,59 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerTiposServ" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center|center_vertical"
+        android:text="*"
+        android:textAlignment="center"
+        android:textColor="#F44336"
+        app:layout_constraintBottom_toTopOf="@+id/nombreServiceEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="#F44336"
+        app:layout_constraintBottom_toTopOf="@+id/userServiceEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/nombreServiceEdit"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Campos obligatorios *"
+        android:textColor="#F44336"
+        app:layout_constraintBottom_toTopOf="@+id/anadirServiceBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTiposServ"
+        app:layout_constraintVertical_bias="0.508" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="#F44336"
+        app:layout_constraintBottom_toTopOf="@+id/contrasenaServiceEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/userServiceEdit"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
