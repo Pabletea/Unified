@@ -1,14 +1,19 @@
 package com.example.unified
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
-import com.example.unified.databinding.FragmentMigracionBinding
+import androidx.fragment.app.Fragment
 import com.example.unified.databinding.FragmentServicesBinding
+import java.io.InputStream
+import java.net.URL
+import com.squareup.picasso.Picasso
+
 
 class ServicesFragment : Fragment() {
     private var _binding: FragmentServicesBinding? = null
@@ -34,8 +39,14 @@ class ServicesFragment : Fragment() {
             val instacia  = layoutInflater.inflate(R.layout.service_item, null)
 
             instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text = "Servicio $i"
+            //Cambiar el src de la imagen de la instancia
             serviceContainer.addView(instacia)
             //al pulsar en cada una de las instancias creadas poner hola
+            //Variable que sea igual a la imagen de la instancia
+            val imageServ = instacia.findViewById<ImageView>(R.id.imagenServ)
+            val imageUrl = "https://static.cdninstagram.com/rsrc.php/v3/yb/r/lswP1OF1o6P.png"
+
+            Picasso.get().load(imageUrl).into(imageServ)
             instacia.setOnClickListener{
                 //Cambiar de fragment
                 val fragment1 = this
@@ -54,6 +65,14 @@ class ServicesFragment : Fragment() {
         }
 
 
+    }
+    fun loadImageFromWebOperations(url: String): Drawable? {
+        return try {
+            val inputStream: InputStream = URL(url).content as InputStream
+            Drawable.createFromStream(inputStream, "src name")
+        } catch (e: Exception) {
+            null
+        }
     }
 
 

@@ -32,16 +32,38 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         fab = findViewById(R.id.fab)
         drawerLayout=findViewById(R.id.drawer_layout)
-        var navigationView:NavigationView = findViewById(R.id.nav_view)
-        var toolbar:androidx.appcompat.widget.Toolbar=findViewById(R.id.toolbar)
+//        var navigationView:NavigationView = findViewById(R.id.nav_view)
+//        var toolbar:androidx.appcompat.widget.Toolbar=findViewById(R.id.toolbar)
+//
+//
+//        setSupportActionBar(toolbar)
+//        var toogle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,R.string.close_nav)
+//        drawerLayout.addDrawerListener(toogle)
+//        toogle.syncState()
+//        navigationView.setNavigationItemSelectedListener { menuItem ->
+//            // Manejar la selección del elemento del menú aquí
+//            when (menuItem.itemId) {
+//                R.id.nav_home -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.frame_layout, HomeFragment())
+//                        .commit()
+//                }
+//                R.id.nav_settings -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.frame_layout, AjustesFragment())
+//                        .commit()
+//                }
+//
+//            }
+//
+//            // Cerrar el drawer después de la selección
+//            drawerLayout.closeDrawers()
+//
+//            true // Indicar que el evento de selección ha sido manejado correctamente
+//        }
 
 
-        setSupportActionBar(toolbar)
-        var toogle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,R.string.close_nav)
-        drawerLayout.addDrawerListener(toogle)
-        toogle.syncState()
 
-        
 
 
 
@@ -52,15 +74,9 @@ class HomeActivity : AppCompatActivity() {
 
         if(savedInstanceState == null){
             supportFragmentManager.beginTransaction().replace(R.id.frame_layout,HomeFragment()).commit()
-            navigationView.setCheckedItem(R.id.nav_home)
         }
 
 
-
-
-
-
-        replaceFragment(HomeFragment())
 
        bottomNavigationView.background = null
 
