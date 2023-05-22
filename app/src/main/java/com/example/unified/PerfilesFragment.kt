@@ -1,26 +1,28 @@
 package com.example.unified
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.example.unified.databinding.FragmentMigracionBinding
+import com.example.unified.databinding.FragmentPerfilesBinding
 import com.example.unified.databinding.FragmentServicesBinding
 
-class ServicesFragment : Fragment() {
-    private var _binding: FragmentServicesBinding? = null
+class PerfilesFragment : Fragment() {
+    private var _binding: FragmentPerfilesBinding? = null
     private val binding get() = _binding!!
-    //variable que sea igual al linear layout container
+
+
     private val serviceContainer: LinearLayout get() = binding.contenedorServices
 
     val num=3
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentServicesBinding.inflate(inflater, container, false)
+        _binding = FragmentPerfilesBinding.inflate(inflater, container, false)
         return binding.root
 
 
@@ -32,22 +34,14 @@ class ServicesFragment : Fragment() {
 
         for(i in 0 until num){
             val instacia  = layoutInflater.inflate(R.layout.service_item, null)
-
-            instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text = "Servicio $i"
+            //cambiar el texto de la instacia creada
+            instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text = "Perfil $i"
             serviceContainer.addView(instacia)
-            //al pulsar en cada una de las instancias creadas poner hola
             instacia.setOnClickListener{
-                //Cambiar de fragment
-                val fragment1 = this
-                val fragment2 = PerfilesFragment()
-                val transaction = parentFragmentManager.beginTransaction()
-                transaction.replace(fragment1.id, fragment2)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                val intent = Intent(this.context, PerfilDataActivity::class.java)
+                startActivity(intent)
             }
-
         }
-
 
         binding.backBtn.setOnClickListener{
             parentFragmentManager.popBackStack()
@@ -55,6 +49,4 @@ class ServicesFragment : Fragment() {
 
 
     }
-
-
 }
