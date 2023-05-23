@@ -24,13 +24,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.socialCard.setOnClickListener{
-            //cambiar de fragment
+            //cambiar de fragment pasando por intent el nombre del servicio
             val fragment1 = this
             val fragment2 = ServicesFragment()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(fragment1.id, fragment2)
             transaction.addToBackStack(null)
             transaction.commit()
+
         }
         binding.comprasCard.setOnClickListener{
             //cambiar de fragment

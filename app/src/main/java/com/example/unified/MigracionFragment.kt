@@ -27,11 +27,6 @@ class MigracionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.crearCuentaTxtMigra.setOnClickListener{
-           val intent = Intent(requireContext(), Register::class.java)
-            startActivity(intent)
-
-        }
     }
 
 

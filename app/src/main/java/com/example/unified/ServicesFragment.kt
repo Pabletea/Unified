@@ -1,59 +1,79 @@
 package com.example.unified
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import com.example.unified.databinding.FragmentServicesBinding
+import java.io.InputStream
+import java.net.URL
+import com.squareup.picasso.Picasso
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ServicesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ServicesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentServicesBinding? = null
+    private val binding get() = _binding!!
+    //variable que sea igual al linear layout container
+    private val serviceContainer: LinearLayout get() = binding.contenedorServices
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    val num=3
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        _binding = FragmentServicesBinding.inflate(inflater, container, false)
+        return binding.root
+
+
+    }
+
+    @SuppressLint("MissingInflatedId")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        for(i in 0 until num){
+            val instacia  = layoutInflater.inflate(R.layout.service_item, null)
+
+            instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text = "Servicio $i"
+            //Cambiar el src de la imagen de la instancia
+            serviceContainer.addView(instacia)
+            //al pulsar en cada una de las instancias creadas poner hola
+            //Variable que sea igual a la imagen de la instancia
+            val imageServ = instacia.findViewById<ImageView>(R.id.imagenServ)
+            val imageUrl = "https://static.cdninstagram.com/rsrc.php/v3/yb/r/lswP1OF1o6P.png"
+
+            Picasso.get().load(imageUrl).into(imageServ)
+            instacia.setOnClickListener{
+                //Cambiar de fragment
+                val fragment1 = this
+                val fragment2 = PerfilesFragment()
+                val transaction = parentFragmentManager.beginTransaction()
+                transaction.replace(fragment1.id, fragment2)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
+
+        }
+
+
+        binding.backBtn.setOnClickListener{
+            parentFragmentManager.popBackStack()
+        }
+
+
+    }
+    fun loadImageFromWebOperations(url: String): Drawable? {
+        return try {
+            val inputStream: InputStream = URL(url).content as InputStream
+            Drawable.createFromStream(inputStream, "src name")
+        } catch (e: Exception) {
+            null
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_services, container, false)
-    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ServicesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ServicesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

@@ -60,19 +60,6 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextText"
             app:layout_constraintVertical_bias="0.058" />
 
-        <TextView
-            android:id="@+id/crearCuentaTxtMigra"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Crea una"
-            android:textColor="#3373c4"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.016" />
-
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
@@ -80,8 +67,9 @@
             android:text="Migrar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/crearCuentaTxtMigra"
-            app:layout_constraintVertical_bias="0.262" />
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.27" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
