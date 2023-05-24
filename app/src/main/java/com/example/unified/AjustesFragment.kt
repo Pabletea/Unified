@@ -27,6 +27,12 @@ class AjustesFragment : Fragment() {
         binding.cerrarSesionBtn.setOnClickListener{
             showLogoutDialog()
         }
+        binding.datosPerfilBtn.setOnClickListener{
+            val intent = android.content.Intent(this.context, DatosPerfilActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
     private fun showLogoutDialog() {
 
