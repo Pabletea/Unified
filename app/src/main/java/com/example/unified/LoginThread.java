@@ -10,11 +10,7 @@ public class LoginThread implements Runnable{
     public String pass;
     public boolean userchecked = false;
     public boolean passchecked = false;
-    public int insertado=0;
 
-    public String nomUser="";
-    public String emailuser="";
-    public String passuser="";
 
 
 
@@ -31,19 +27,9 @@ public class LoginThread implements Runnable{
 
         DbTools dbt = new DbTools();
 
-
-        userchecked = false;
-        passchecked = false;
-
         dbt.dbConnection();
 
-        try {
-            pass=dbt.getPassword("pabloymiguel2002@gmail.com");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
-        insertado=dbt.addUser(nomUser,emailuser,passuser);
 
         dbt.dbClose();
     }

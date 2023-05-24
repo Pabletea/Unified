@@ -37,24 +37,6 @@ public class DbTools{
         }
 
     }
-    public boolean checkUser(String user){
-
-        try {
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = st.executeQuery("SELECT username FROM auth_user");
-            while (rs.next()) {
-                if(rs.getString(1).equals(user))
-                {
-                    return true;
-                }
-            }
-        }
-        catch(Exception e){
-            System.out.println("se ha producido un error de conexion");
-            System.out.println(e);
-        }
-        return false;
-    }
 
     public String getPassword(String user) throws SQLException {
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -98,6 +80,34 @@ public class DbTools{
         }
 
         return insertado;
+    }
+    public boolean checkUser(String user) throws SQLException{
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultado = statement.executeQuery(String.format("SELECT userMail from user where user.userMail='%s'",user));
+
+        return false;
+    }
+    public boolean checkPass(String user,String pass) throws SQLException {
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultado = statement.executeQuery(String.format("SELECT userMasterPassword from user where user.userMail='%s'",user));
+        boolean primerElemento = true;
+        String primerNombreTabla = null;
+
+        while (resultado.next()) {
+            String nombreTabla = resultado.getString(1);
+            if (primerElemento) {
+                primerNombreTabla = nombreTabla;
+                primerElemento = false;
+            }
+        }
+
+        resultado.close(); // Cerrar el conjunto de resultados después de terminar el bucle
+        if(pass.equals(primerNombreTabla)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
