@@ -38,11 +38,11 @@ class LogIn : AppCompatActivity() {
                 Toast.makeText(this, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
-                if(!lT.userchecked){
-                    Toast.makeText(this, "El usuario no existe", Toast.LENGTH_SHORT).show()
-                }else{
+                if(lT.userchecked && lT.passchecked){
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
+                }else{
+                    Toast.makeText(this, "Error en las credenciales", Toast.LENGTH_SHORT).show()
                 }
             }
         }
