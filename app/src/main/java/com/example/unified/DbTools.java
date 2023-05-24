@@ -83,9 +83,24 @@ public class DbTools{
     }
     public boolean checkUser(String user) throws SQLException{
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet resultado = statement.executeQuery(String.format("SELECT userMail from user where user.userMail='%s'",user));
+        ResultSet resultado = statement.executeQuery("SELECT COUNT(*) AS count FROM user WHERE userMail = '"+user+"'");
+        boolean primerElemento = true;
+        String primerNombreTabla = null;
+        while (resultado.next()) {
+            String nombreTabla = resultado.getString(1);
+            if (primerElemento) {
+                primerNombreTabla = nombreTabla;
+                primerElemento = false;
+            }
+        }
+        resultado.close();
+        if (primerNombreTabla.equals("1")) {
+            return true;
+        }
+        else{
+            return false;
+        }
 
-        return false;
     }
     public boolean checkPass(String user,String pass) throws SQLException {
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

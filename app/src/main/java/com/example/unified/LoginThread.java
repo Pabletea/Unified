@@ -29,7 +29,16 @@ public class LoginThread implements Runnable{
 
         dbt.dbConnection();
 
-
+        try {
+            userchecked=dbt.checkUser(user);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            passchecked=dbt.checkPass(user,pass);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         dbt.dbClose();
     }
