@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DbTools{
 
@@ -124,5 +127,22 @@ public class DbTools{
             return false;
         }
     }
+
+    public  List<String> getUserData(String mail) throws SQLException {
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultado = statement.executeQuery("SELECT * from user WHERE userMAil = '"+mail+"'");
+        List<String> datosUser= new ArrayList<String>();
+        ResultSetMetaData metaData=resultado.getMetaData();
+        int columnas=metaData.getColumnCount();
+        if(resultado.next()){
+            for(int i=1;i<=columnas;i++){
+                datosUser.add(resultado.getString(i));
+            }
+        }
+        resultado.close();
+
+        return datosUser;
+    }
+
 
 }

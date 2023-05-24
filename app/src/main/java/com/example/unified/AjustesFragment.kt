@@ -31,6 +31,9 @@ class AjustesFragment : Fragment() {
             val intent = android.content.Intent(this.context, DatosPerfilActivity::class.java)
             startActivity(intent)
         }
+        binding.borrarCuentaBtn.setOnClickListener{
+            showBorrarCuentaDialog()
+        }
 
 
     }
@@ -51,6 +54,24 @@ class AjustesFragment : Fragment() {
 
         val dialog = builder.create()
         dialog.show()
+    }
+    private fun showBorrarCuentaDialog(){
+        val builder = AlertDialog.Builder(this.context)
+        builder.setTitle("Borrar cuenta")
+        builder.setMessage("¿Estás seguro de que deseas borrar la cuenta?")
+        builder.setPositiveButton("Sí") { dialog, which ->
+            //Cambiar a la activity de login
+            val intent = android.content.Intent(this.context, LogIn::class.java)
+            startActivity(intent)
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("No") { dialog, which ->
+            dialog.dismiss()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+
     }
 
 }
