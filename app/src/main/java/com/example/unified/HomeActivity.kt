@@ -28,6 +28,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val userMail= intent.getStringExtra("user")
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         fab = findViewById(R.id.fab)

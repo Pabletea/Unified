@@ -18,8 +18,13 @@ class DatosPerfilActivity : AppCompatActivity() {
         var bool:Boolean=false
         var datosUser:List<String> = listOf()
 
+        //Crear objeto de la clase login
+        //Variable que sea igual al valor de user en la clase LogIn
+        var lgIn = LogIn()
+
+
         var gdT = GetDataThread()
-        gdT.userMail="pabloymiguel2002@gmail.com"
+        gdT.userMail=GlobalValues.instance.userMail
         gdT.tryLogThread()
 
         datosUser=gdT.datosUser
