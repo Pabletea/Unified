@@ -21,7 +21,7 @@ class ServicesFragment : Fragment() {
     //variable que sea igual al linear layout container
     private val serviceContainer: LinearLayout get() = binding.contenedorServices
 
-    val num=3
+    val numServices=0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -35,28 +35,31 @@ class ServicesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        for(i in 0 until num){
-            val instacia  = layoutInflater.inflate(R.layout.service_item, null)
+        if(numServices>0) {
+            for (i in 0 until numServices) {
+                val instacia = layoutInflater.inflate(R.layout.service_item, null)
 
-            instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text = "Servicio $i"
-            //Cambiar el src de la imagen de la instancia
-            serviceContainer.addView(instacia)
-            //al pulsar en cada una de las instancias creadas poner hola
-            //Variable que sea igual a la imagen de la instancia
-            val imageServ = instacia.findViewById<ImageView>(R.id.imagenServ)
-            val imageUrl = "https://static.cdninstagram.com/rsrc.php/v3/yb/r/lswP1OF1o6P.png"
+                instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text =
+                    "Servicio $i"
+                //Cambiar el src de la imagen de la instancia
+                serviceContainer.addView(instacia)
+                //al pulsar en cada una de las instancias creadas poner hola
+                //Variable que sea igual a la imagen de la instancia
+                val imageServ = instacia.findViewById<ImageView>(R.id.imagenServ)
+                val imageUrl = "https://static.cdninstagram.com/rsrc.php/v3/yb/r/lswP1OF1o6P.png"
 
-            Picasso.get().load(imageUrl).into(imageServ)
-            instacia.setOnClickListener{
-                //Cambiar de fragment
-                val fragment1 = this
-                val fragment2 = PerfilesFragment()
-                val transaction = parentFragmentManager.beginTransaction()
-                transaction.replace(fragment1.id, fragment2)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                Picasso.get().load(imageUrl).into(imageServ)
+                instacia.setOnClickListener {
+                    //Cambiar de fragment
+                    val fragment1 = this
+                    val fragment2 = PerfilesFragment()
+                    val transaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(fragment1.id, fragment2)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                }
+
             }
-
         }
 
 

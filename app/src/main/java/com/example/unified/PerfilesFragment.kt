@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.example.unified.databinding.FragmentPerfilesBinding
-import com.example.unified.databinding.FragmentServicesBinding
 
 class PerfilesFragment : Fragment() {
     private var _binding: FragmentPerfilesBinding? = null
@@ -18,7 +17,7 @@ class PerfilesFragment : Fragment() {
 
     private val serviceContainer: LinearLayout get() = binding.contenedorServices
 
-    val num=3
+    val numCuentas=0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -32,16 +31,21 @@ class PerfilesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        for(i in 0 until num){
-            val instacia  = layoutInflater.inflate(R.layout.service_item, null)
-            //cambiar el texto de la instacia creada
-            instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text = "Perfil $i"
-            serviceContainer.addView(instacia)
-            instacia.setOnClickListener{
-                val intent = Intent(this.context, PerfilDataActivity::class.java)
-                startActivity(intent)
+        if(numCuentas>0) {
+            for (i in 0 until numCuentas) {
+                val instacia = layoutInflater.inflate(R.layout.service_item, null)
+                //cambiar el texto de la instacia creada
+                instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text =
+                    "Perfil $i"
+                serviceContainer.addView(instacia)
+                instacia.setOnClickListener {
+                    val intent = Intent(this.context, PerfilDataActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
+
+
 
         binding.backBtn.setOnClickListener{
             parentFragmentManager.popBackStack()
