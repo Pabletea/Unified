@@ -3,6 +3,7 @@ package com.example.unified
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.unified.databinding.ActivityLoginBinding
 
 class LogIn : AppCompatActivity() {
@@ -11,6 +12,8 @@ class LogIn : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

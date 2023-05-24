@@ -3,11 +3,9 @@ package com.example.unified;
 
 import java.sql.SQLException;
 
-public class LoginThread implements Runnable{
+public class RegisterThread implements Runnable{
 
     Thread t;
-    public String user;
-    public String pass;
     public boolean userchecked = false;
     public boolean passchecked = false;
     public int insertado=0;
@@ -18,8 +16,9 @@ public class LoginThread implements Runnable{
 
 
 
+
     public boolean tryLogThread() throws InterruptedException {
-        t = new Thread(this,"Login Thread");
+        t = new Thread(this,"Register Thread");
         t.start();
         while(t.getState()!=Thread.State.TERMINATED){
 
@@ -35,18 +34,14 @@ public class LoginThread implements Runnable{
         userchecked = false;
         passchecked = false;
 
-        dbt.dbConnection();
 
-        try {
-            pass=dbt.getPassword("pabloymiguel2002@gmail.com");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        dbt.dbConnection();
 
         insertado=dbt.addUser(nomUser,emailuser,passuser);
 
         dbt.dbClose();
     }
+
 
 
 

@@ -31,7 +31,12 @@ class GeneradorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         clipboardManager = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        binding.contrasenaGenerada.text = generarCadenaAleatoria(20,10,4,true,true,true)
+
+        val lg = LoginThread()
+        lg.tryLogThread()
+        binding.contrasenaGenerada.text = lg.pass
+
+
 
         binding.copiarContrasena.setOnClickListener{
 
