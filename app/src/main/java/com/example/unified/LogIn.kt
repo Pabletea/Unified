@@ -29,7 +29,7 @@ class LogIn : AppCompatActivity() {
         }
 
         binding.loginBtn.setOnClickListener {
-              userMail = binding.username.text.toString()
+            userMail = binding.username.text.toString()
             password = binding.password.text.toString()
             var lT = LoginThread()
             lT.user = userMail

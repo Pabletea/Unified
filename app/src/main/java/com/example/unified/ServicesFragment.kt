@@ -21,7 +21,7 @@ class ServicesFragment : Fragment() {
     //variable que sea igual al linear layout container
     private val serviceContainer: LinearLayout get() = binding.contenedorServices
 
-    val numServices=0
+    val numServices=3
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

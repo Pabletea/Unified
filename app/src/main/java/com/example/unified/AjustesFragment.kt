@@ -31,6 +31,11 @@ class AjustesFragment : Fragment() {
             val intent = android.content.Intent(this.context, DatosPerfilActivity::class.java)
             startActivity(intent)
         }
+        binding.cambioContrasena.setOnClickListener{
+            val intent = android.content.Intent(this.context, CambioContrasenaActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.borrarCuentaBtn.setOnClickListener{
             showBorrarCuentaDialog()
         }
