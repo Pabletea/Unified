@@ -165,7 +165,20 @@ public class DbTools{
         newApe=newData.get(1);
         newTlf=newData.get(2);
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        int resultado = statement.executeUpdate("UPDATE user SET userName='"+newNombre+"', userSurname='"+newApe+"',userTlf='"+newTlf+"' WHERE userMail='"+user+"'");
+        int resultado = statement.executeUpdate("UPDATE user SET userName='"+newNombre+"', userSurname='"+newApe+"',userTlf='"+newTlf+"' WHERE userMail='"+user+"'-");
+        if (resultado==1){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    public boolean deleteUser(String user) throws SQLException {
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        int resultado = statement.executeUpdate("DELETE FROM user WHERE userMail='"+user+"'");
+        statement.close();
         if (resultado==1){
             return true;
         }

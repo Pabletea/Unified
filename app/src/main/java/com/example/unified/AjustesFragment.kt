@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.unified.databinding.FragmentAjustesBinding
 import com.example.unified.databinding.FragmentHomeBinding
 
@@ -66,10 +67,20 @@ class AjustesFragment : Fragment() {
         builder.setMessage("¿Estás seguro de que deseas borrar la cuenta?")
         builder.setPositiveButton("Sí") { dialog, which ->
             //Cambiar a la activity de login
-            GlobalValues.instance.userMail = ""
-            val intent = android.content.Intent(this.context, LogIn::class.java)
-            startActivity(intent)
-            dialog.dismiss()
+
+            var duT= DeleteUserThread()
+            duT.user=GlobalValues.instance.userMail
+            duT.tryLogThread()
+
+            if(duT.deleteCheck) {
+
+                Toast.makeText(this.context, "Cuenta borrada", Toast.LENGTH_SHORT).show()
+                val intent = android.content.Intent(this.context, LogIn::class.java)
+                startActivity(intent)
+                dialog.dismiss()
+            }else{
+                Toast.makeText(this.context, "Error al borrar la cuenta", Toast.LENGTH_SHORT).show()
+            }
         }
         builder.setNegativeButton("No") { dialog, which ->
             dialog.dismiss()
