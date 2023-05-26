@@ -20,7 +20,7 @@ class DatosPerfilActivity : AppCompatActivity() {
 
         //Crear objeto de la clase login
         //Variable que sea igual al valor de user en la clase LogIn
-        var lgIn = LogIn()
+
 
 
         var gdT = GetDataThread()
@@ -30,7 +30,9 @@ class DatosPerfilActivity : AppCompatActivity() {
         datosUser=gdT.datosUser
 
         var bindinglist:ArrayList<EditText> = ArrayList<EditText>()
+        var bindinglist2:ArrayList<EditText> = ArrayList<EditText>()
         poblateArrayEdit(bindinglist)
+        poblateArray2(bindinglist2)
 
         //Empezamos a iterar por 1 para evitar mostrar el id del usuario
         var i:Int=1
@@ -53,8 +55,9 @@ class DatosPerfilActivity : AppCompatActivity() {
 
 
 
+
         binding.editarDatosUser.setOnClickListener{
-            bool = changeValues(bindinglist,bool)
+            bool = changeValues(bindinglist2,bool)
         }
 
 
@@ -74,16 +77,28 @@ class DatosPerfilActivity : AppCompatActivity() {
             }
         } else {
             binding.editarDatosUser.text = "Editar"
-            bindinglist.forEach {
-                it.apply {
-                    alpha = 0.5f
-                    isEnabled = false
-                    isFocusable = false
-                    isFocusableInTouchMode = false
-                    bool2=false
-                }
-            }
+            var arrayString:ArrayList<String> = ArrayList<String>()
+            poblateArrayString(arrayString)
+            var udT = UpdateDataThread()
+            udT.newData=arrayString
+            udT.userMail=GlobalValues.instance.userMail
+            udT.tryLogThread()
 
+            if(udT.updatechecked) {
+                Toast.makeText(this,"Datos actualizados correctamente", Toast.LENGTH_SHORT).show()
+
+                bindinglist.forEach {
+                    it.apply {
+                        alpha = 0.5f
+                        isEnabled = false
+                        isFocusable = false
+                        isFocusableInTouchMode = false
+                        bool2 = false
+                    }
+                }
+            }else{
+                Toast.makeText(this,"Error al actualizar los datos", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return bool2
@@ -94,5 +109,15 @@ class DatosPerfilActivity : AppCompatActivity() {
         bindinglist.add(binding.mailUserEdit)
         bindinglist.add(binding.fechaUserEdit)
         bindinglist.add(binding.tlfUserEdit)
+    }
+    fun poblateArray2(bindinglist: ArrayList<EditText>){
+        bindinglist.add(binding.nomUserEdit)
+        bindinglist.add(binding.appeUserEdit)
+        bindinglist.add(binding.tlfUserEdit)
+    }
+    fun poblateArrayString(arrayString : ArrayList<String>){
+        arrayString.add(binding.nomUserEdit.text.toString())
+        arrayString.add(binding.appeUserEdit.text.toString())
+        arrayString.add(binding.tlfUserEdit.text.toString())
     }
 }

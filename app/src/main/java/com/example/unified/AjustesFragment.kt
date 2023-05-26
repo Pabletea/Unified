@@ -66,6 +66,7 @@ class AjustesFragment : Fragment() {
         builder.setMessage("¿Estás seguro de que deseas borrar la cuenta?")
         builder.setPositiveButton("Sí") { dialog, which ->
             //Cambiar a la activity de login
+            GlobalValues.instance.userMail = ""
             val intent = android.content.Intent(this.context, LogIn::class.java)
             startActivity(intent)
             dialog.dismiss()

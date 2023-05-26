@@ -4,16 +4,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdateDataThread implements Runnable{
+public class UpdatePassThread implements Runnable{
 
     Thread t;
 
     public String userMail;
+    public String newPass;
     public boolean userchecked = false;
     public boolean passchecked = false;
     public boolean updatechecked = false;
 
-    public List<String> newData= new ArrayList<String>();
+    public List<String> datosUser= new ArrayList<String>();
 
 
 
@@ -41,7 +42,7 @@ public class UpdateDataThread implements Runnable{
         dbt.dbConnection();
 
         try {
-            updatechecked=dbt.updateData(userMail,newData);
+            updatechecked=dbt.updatePassword(userMail,newPass);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

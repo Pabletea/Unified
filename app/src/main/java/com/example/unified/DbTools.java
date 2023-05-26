@@ -157,5 +157,23 @@ public class DbTools{
 
     }
 
+    public boolean updateData(String user,List<String> newData) throws SQLException {
+        String newNombre="";
+        String newApe="";
+        String newTlf="";
+        newNombre=newData.get(0);
+        newApe=newData.get(1);
+        newTlf=newData.get(2);
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        int resultado = statement.executeUpdate("UPDATE user SET userName='"+newNombre+"', userSurname='"+newApe+"',userTlf='"+newTlf+"' WHERE userMail='"+user+"'");
+        if (resultado==1){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
 
 }

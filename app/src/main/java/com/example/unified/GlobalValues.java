@@ -6,8 +6,4 @@ public class GlobalValues {
 
     public String userMail;
 
-
-
-
-
 }

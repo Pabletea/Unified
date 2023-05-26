@@ -84,7 +84,7 @@ class CambioContrasenaActivity : AppCompatActivity() {
                     binding.newPassCheckBtn.isFocusable = false
                     binding.newPassCheckBtn.isFocusableInTouchMode = false
 
-                    var udT = UpdateDataThread()
+                    var udT = UpdatePassThread()
                     udT.userMail=userMail
                     udT.newPass=newPass
                     udT.tryLogThread()
