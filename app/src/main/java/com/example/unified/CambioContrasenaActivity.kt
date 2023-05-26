@@ -19,6 +19,7 @@ class CambioContrasenaActivity : AppCompatActivity() {
         var pass: String=""
         var newPass:String=""
         var userMail=""
+        userMail=GlobalValues.instance.userMail
 
 
         binding.cambioContrasenaEdit.setOnFocusChangeListener { v, hasFocus ->
@@ -48,7 +49,7 @@ class CambioContrasenaActivity : AppCompatActivity() {
                     Toast.makeText(this, "Introduce tu contraseña actual", Toast.LENGTH_SHORT).show()
 
                 } else {
-                    userMail=GlobalValues.instance.userMail
+
                     var lgT = LoginThread()
                     lgT.user=userMail
                     lgT.pass=pass
@@ -83,10 +84,16 @@ class CambioContrasenaActivity : AppCompatActivity() {
                     binding.newPassCheckBtn.isFocusable = false
                     binding.newPassCheckBtn.isFocusableInTouchMode = false
 
-
-
-                    Toast.makeText(this, "Contraseña cambiada correctamente", Toast.LENGTH_SHORT).show()
-                    bool2=true
+                    var udT = UpdateDataThread()
+                    udT.userMail=userMail
+                    udT.newPass=newPass
+                    udT.tryLogThread()
+                    if(udT.updatechecked) {
+                        Toast.makeText(this, "Contraseña cambiada correctamente", Toast.LENGTH_SHORT).show()
+                        bool2 = true
+                    }else{
+                        Toast.makeText(this, "Error al cambiar la contraseña", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
             }

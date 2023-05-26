@@ -144,5 +144,16 @@ public class DbTools{
         return datosUser;
     }
 
+    public boolean updatePassword(String userMail,String newPass) throws SQLException {
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        int resultado = statement.executeUpdate("UPDATE user SET userMasterPassword = '"+newPass+"' WHERE userMail = '"+userMail+"'");
+        if(resultado==1){
+            return true;
+        } else{
+            return false;
+        }
+
+    }
+
 
 }
