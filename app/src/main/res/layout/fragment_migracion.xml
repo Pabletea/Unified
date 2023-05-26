@@ -38,7 +38,7 @@
         <EditText
             android:id="@+id/editTextText"
             android:layout_width="320dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
             app:layout_constraintBottom_toBottomOf="parent"
