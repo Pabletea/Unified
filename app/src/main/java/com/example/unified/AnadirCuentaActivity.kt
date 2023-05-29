@@ -1,10 +1,10 @@
 package com.example.unified
 
 import android.R
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.unified.databinding.ActivityAnadirCuentaBinding
 
 class AnadirCuentaActivity : AppCompatActivity() {
@@ -17,6 +17,8 @@ class AnadirCuentaActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         var visible:Boolean =false
+        //lista de string
+        var servData:List<String> = listOf()
 
         //Poblar el spinner con redes sociales,compras,correo y otro
         val opciones = arrayOf("Otros", "Compras", "Correo", "Social")
@@ -47,7 +49,35 @@ class AnadirCuentaActivity : AppCompatActivity() {
             if(binding.nombreServiceEdit.text.toString().isEmpty() || binding.userServiceEdit.text.toString().isEmpty() || binding.contrasenaServiceEdit.text.toString().isEmpty()){
                 Toast.makeText(this, "Por favor rellena todos los campos", Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(this, "Cuenta añadida correctamente", Toast.LENGTH_SHORT).show()
+                var pass:String=""
+                try {
+                    val key = "clave-secreta123" // La clave debe tener 16, 24 o 32 caracteres para AES-128, AES-192 o AES-256 respectivamente
+                    val plainText = "binding.contrasenaServiceEdit.text.toString()"
+                    val encryptedText = AESEncryptionUtil.encrypt(key, plainText)
+                    println("Texto cifrado: $encryptedText")
+                    pass=encryptedText
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    println("Error encrupt")
+                }
+
+
+                //Añadir los valores de los edit y el spinner a servData
+                servData+=binding.nombreServiceEdit.text.toString()
+                servData+=binding.userServiceEdit.text.toString()
+                servData+=pass
+                servData+=binding.urlServiceEdit.text.toString()
+                servData+=binding.spinnerTiposServ.selectedItem.toString()
+                var asT = AddServiceThread()
+                asT.userMail=GlobalValues.instance.userMail
+                asT.servData=servData
+                asT.tryLogThread()
+                if (asT.uploadchecked) {
+                    Toast.makeText(this, "Cuenta añadida correctamente", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this, "Error al añadir la cuenta", Toast.LENGTH_SHORT).show()
+                }
                 finish()
             }
         }
@@ -72,7 +102,7 @@ class AnadirCuentaActivity : AppCompatActivity() {
         }
 
         var cadenaAleatoria = ""
-            repeat(cantidadLetras) {
+        repeat(cantidadLetras) {
                 cadenaAleatoria += letrasMay.random()
             }
 

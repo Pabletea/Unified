@@ -1,5 +1,7 @@
 package com.example.unified;
 
+import android.widget.Toast;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -180,6 +182,47 @@ public class DbTools{
         int resultado = statement.executeUpdate("DELETE FROM user WHERE userMail='"+user+"'");
         statement.close();
         if (resultado==1){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+
+    public boolean addService(String user, List <String> serviceData){
+        int insertado=0;
+        int insertado2=0;
+        int maseterinsertado=0;
+        if(serviceData.isEmpty()){
+            return false;
+        }else {
+            try {
+                String consulta = "INSERT INTO service (servName,servType,servMainUrl) values ('" + serviceData.get(0) + "','" + serviceData.get(4) + "','" + serviceData.get(3) + "')";
+                String consulta2 = "INSERT INTO account (accountNickName, `accountPassword`, `Service_idService`, `user_idUser`) VALUES ('" + serviceData.get(1) + "', '" + serviceData.get(2) + "', (SELECT idService FROM service WHERE servName = '" + serviceData.get(0) + "'), (SELECT idUser FROM user WHERE userMail = '" + user + "'))";
+                PreparedStatement statement = conn.prepareStatement(consulta);
+                PreparedStatement statement2 = conn.prepareStatement(consulta2);
+                insertado = statement.executeUpdate(consulta);
+                insertado2 = statement2.executeUpdate(consulta2);
+                if(insertado>0 && insertado2>0){
+                    maseterinsertado=1;
+                    System.out.println("se ha insertado correctamente");
+                }
+                else{
+                    System.out.println("no se ha insertado correctamente");
+                }
+
+                statement.close();
+                statement2.close();
+            } catch (Exception e) {
+                System.out.println("Error al insertar el servicio");
+                System.out.println(e);
+            }
+        }
+
+
+        if(maseterinsertado==1){
             return true;
         }
         else{
