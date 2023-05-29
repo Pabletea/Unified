@@ -108,13 +108,32 @@ public class DbTools{
 
     }
     public boolean checkPass(String user,String pass) throws SQLException {
+        String passEncrypted="";
+        String passUnecnrpted="";
+
+
+
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet resultado = statement.executeQuery(String.format("SELECT userMasterPassword from user where user.userMail='%s'",user));
+
+
+
+
         boolean primerElemento = true;
         String primerNombreTabla = null;
 
         while (resultado.next()) {
             String nombreTabla = resultado.getString(1);
+            try {
+                String key = "clave-secreta123"; // La clave debe tener 16, 24 o 32 caracteres para AES-128, AES-192 o AES-256 respectivament
+                nombreTabla = AESEncryptionUtil.decrypt(key, nombreTabla);
+                System.out.println("Texto descifrado: " + nombreTabla);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Error al descifrar: " + e.getMessage());
+            }
+
+
             if (primerElemento) {
                 primerNombreTabla = nombreTabla;
                 primerElemento = false;

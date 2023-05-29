@@ -34,10 +34,23 @@ class Register : AppCompatActivity() {
                 if (passUser != passUser2) {
                     Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
                 } else {
+                    var passUserEn:String=""
+                    try {
+                        val key = "clave-secreta123" // La clave debe tener 16, 24 o 32 caracteres para AES-128, AES-192 o AES-256 respectivamente
+                        val plainText = binding.repassword.text.toString()
+                        val encryptedText = AESEncryptionUtil.encrypt(key, plainText)
+                        println("Texto cifrado: $encryptedText")
+                        passUserEn=encryptedText
+
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        println("Error encrupt")
+                    }
+
                     val lgR = RegisterThread()
                     lgR.nomUser=nomUser
                     lgR.emailuser=mailUSer
-                    lgR.passuser=passUser
+                    lgR.passuser=passUserEn
                     lgR.tryLogThread()
                     insertado = lgR.insertado
                     if (insertado == 1) {
