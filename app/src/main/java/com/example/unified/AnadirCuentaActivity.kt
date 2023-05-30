@@ -52,7 +52,7 @@ class AnadirCuentaActivity : AppCompatActivity() {
                 var pass:String=""
                 try {
                     val key = "clave-secreta123" // La clave debe tener 16, 24 o 32 caracteres para AES-128, AES-192 o AES-256 respectivamente
-                    val plainText = "binding.contrasenaServiceEdit.text.toString()"
+                    val plainText = binding.contrasenaServiceEdit.text.toString()
                     val encryptedText = AESEncryptionUtil.encrypt(key, plainText)
                     println("Texto cifrado: $encryptedText")
                     pass=encryptedText

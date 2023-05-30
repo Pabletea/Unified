@@ -218,13 +218,13 @@ public class DbTools{
             return false;
         }else {
             try {
-                String consulta = "INSERT INTO service (servName,servType,servMainUrl) values ('" + serviceData.get(0) + "','" + serviceData.get(4) + "','" + serviceData.get(3) + "')";
-                String consulta2 = "INSERT INTO account (accountNickName, `accountPassword`, `Service_idService`, `user_idUser`) VALUES ('" + serviceData.get(1) + "', '" + serviceData.get(2) + "', (SELECT idService FROM service WHERE servName = '" + serviceData.get(0) + "'), (SELECT idUser FROM user WHERE userMail = '" + user + "'))";
-                PreparedStatement statement = conn.prepareStatement(consulta);
+//                String consulta = "INSERT INTO service (servName,servType,servMainUrl) values ('" + serviceData.get(0) + "','" + serviceData.get(4) + "','" + serviceData.get(3) + "')";
+                String consulta2 = "INSERT INTO account (accountNickName, `accountPassword`,  `user_idUser`,`accountType`) VALUES ('" + serviceData.get(1) + "', '" + serviceData.get(2) + "', (SELECT idUser FROM user WHERE userMail = '" + user + "'), '" + serviceData.get(4) + "')";
+//                PreparedStatement statement = conn.prepareStatement(consulta);
                 PreparedStatement statement2 = conn.prepareStatement(consulta2);
-                insertado = statement.executeUpdate(consulta);
+//                insertado = statement.executeUpdate(consulta);
                 insertado2 = statement2.executeUpdate(consulta2);
-                if(insertado>0 && insertado2>0){
+                if(insertado2>0){
                     maseterinsertado=1;
                     System.out.println("se ha insertado correctamente");
                 }
@@ -232,7 +232,7 @@ public class DbTools{
                     System.out.println("no se ha insertado correctamente");
                 }
 
-                statement.close();
+//                statement.close();
                 statement2.close();
             } catch (Exception e) {
                 System.out.println("Error al insertar el servicio");
@@ -250,5 +250,19 @@ public class DbTools{
 
     }
 
+    public List<String> getAccounts(String user) throws SQLException {
+        List<String> accounts= new ArrayList<String>();
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultado = statement.executeQuery("SELECT * FROM account WHERE user_idUser = (SELECT idUser FROM user WHERE userMail = '"+user+"')");
+        while (resultado.next()) {
+            // Obtener los valores de las columnas
+            String columna1 = resultado.getString("accountNickName");
+            String columna2 = resultado.getString("accountPassword");
+            String columna3 = resultado.getString("accountType");
 
+            // Guardar los valores en la lista
+            accounts.add(columna1 + ", " + columna2+","+columna3); // Modifica según las columnas que deseas guardar en la lista
+        }
+        return accounts;
+    }
 }

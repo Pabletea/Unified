@@ -17,7 +17,7 @@ class PerfilesFragment : Fragment() {
 
     private val serviceContainer: LinearLayout get() = binding.contenedorServices
 
-    val numCuentas=0
+    var numCuentas=0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -31,15 +31,38 @@ class PerfilesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var gaT = GetAccountThread()
+        gaT.user = GlobalValues.instance.userMail
+        gaT.tryLogThread()
+
+        for(i in gaT.accounts){
+            var value:String=""
+            value=i.split(",")[2]
+            if(value.equals(GlobalValues.instance.servType)){
+                numCuentas++
+            }
+        }
+        //lista que solo contenga las cuentas del servicio seleccionado
+        var listaCuentas= mutableListOf<String>()
+        for(i in gaT.accounts){
+            var value:String=""
+            value=i.split(",")[2]
+            if(value.equals(GlobalValues.instance.servType)){
+                listaCuentas.add(i)
+            }
+        }
+
+//        numCuentas=gaT.accounts.size
         if(numCuentas>0) {
             for (i in 0 until numCuentas) {
                 val instacia = layoutInflater.inflate(R.layout.service_item, null)
-                //cambiar el texto de la instacia creada
-                instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text =
-                    "Perfil $i"
+                //cambiar el texto de la instacia creada por la primera cadena de la lista separada por coma
+                var account =listaCuentas[i]
+                instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text = account.split(",")[0]
                 serviceContainer.addView(instacia)
                 instacia.setOnClickListener {
-                    val intent = Intent(this.context, PerfilDataActivity::class.java)
+                    val intent = Intent(activity, PerfilDataActivity::class.java)
+                    intent.putExtra("account",account)
                     startActivity(intent)
                 }
             }

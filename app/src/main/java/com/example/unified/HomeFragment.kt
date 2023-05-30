@@ -25,8 +25,9 @@ class HomeFragment : Fragment() {
 
         binding.socialCard.setOnClickListener{
             //cambiar de fragment pasando por intent el nombre del servicio
+            GlobalValues.instance.servType="Social"
             val fragment1 = this
-            val fragment2 = ServicesFragment()
+            val fragment2 = PerfilesFragment()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(fragment1.id, fragment2)
             transaction.addToBackStack(null)
@@ -35,17 +36,19 @@ class HomeFragment : Fragment() {
         }
         binding.comprasCard.setOnClickListener{
             //cambiar de fragment
+            GlobalValues.instance.servType="Compras"
             val fragment1 = this
-            val fragment2 = ServicesFragment()
+            val fragment2 = PerfilesFragment()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(fragment1.id, fragment2)
             transaction.addToBackStack(null)
             transaction.commit()
         }
         binding.correoCard.setOnClickListener{
+            GlobalValues.instance.servType="Correo"
             //cambiar de fragment
             val fragment1 = this
-            val fragment2 = ServicesFragment()
+            val fragment2 = PerfilesFragment()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(fragment1.id, fragment2)
             transaction.addToBackStack(null)
@@ -53,8 +56,9 @@ class HomeFragment : Fragment() {
         }
         binding.otrosCard.setOnClickListener{
             //cambiar de fragment
+            GlobalValues.instance.servType="Otros"
             val fragment1 = this
-            val fragment2 = ServicesFragment()
+            val fragment2 = PerfilesFragment()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(fragment1.id, fragment2)
             transaction.addToBackStack(null)
