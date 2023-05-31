@@ -54,7 +54,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/userMail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="user@gmail.com"
@@ -70,7 +70,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2">
+                    app:layout_constraintTop_toBottomOf="@+id/userMail">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/cambioContrasena"

@@ -24,6 +24,7 @@ class AjustesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.userMail.text=GlobalValues.instance.userMail
 
         binding.cerrarSesionBtn.setOnClickListener{
             showLogoutDialog()
