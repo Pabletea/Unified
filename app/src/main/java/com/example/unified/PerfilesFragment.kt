@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.example.unified.databinding.FragmentPerfilesBinding
+import com.google.android.material.textview.MaterialTextView
+import java.util.Locale
 
 class PerfilesFragment : Fragment() {
     private var _binding: FragmentPerfilesBinding? = null
@@ -30,6 +32,8 @@ class PerfilesFragment : Fragment() {
     @SuppressLint("MissingInflatedId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.accHeader.text= GlobalValues.instance.servType.uppercase(Locale.ROOT)
 
         var gaT = GetAccountThread()
         gaT.user = GlobalValues.instance.userMail
@@ -58,7 +62,7 @@ class PerfilesFragment : Fragment() {
                 val instacia = layoutInflater.inflate(R.layout.service_item, null)
                 //cambiar el texto de la instacia creada por la primera cadena de la lista separada por coma
                 var account =listaCuentas[i]
-                instacia.findViewById<com.google.android.material.textview.MaterialTextView>(R.id.serviceName).text = account.split(",")[0]
+                instacia.findViewById<MaterialTextView>(R.id.serviceName).text = account.split(",")[0]
                 serviceContainer.addView(instacia)
                 instacia.setOnClickListener {
                     val intent = Intent(activity, PerfilDataActivity::class.java)
