@@ -21,6 +21,11 @@ class LogIn : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.forgotPassTxt.setOnClickListener{
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
         binding.crearCuentaTxt.setOnClickListener{

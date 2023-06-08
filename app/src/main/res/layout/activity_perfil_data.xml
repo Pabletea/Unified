@@ -7,7 +7,7 @@
     tools:context=".PerfilDataActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/copiarPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +109,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/copiarUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,6 +1,9 @@
 package com.example.unified
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.unified.databinding.ActivityPerfilDataBinding
 
@@ -48,6 +51,22 @@ class PerfilDataActivity : AppCompatActivity() {
                 binding.passNickEdit.inputType = 129
                 bool=false
             }
+        }
+
+        binding.copiarUser.setOnClickListener{
+            //Copiar el usuario al portapapeles
+            val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("label", binding.accNickEdit.text.toString())
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "Usuario copiado", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.copiarPass.setOnClickListener{
+            //Copiar la contraseña al portapapeles
+            val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("label", binding.passNickEdit.text.toString())
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "Contraseña copiada", Toast.LENGTH_SHORT).show()
         }
 
 
