@@ -14,9 +14,9 @@ import java.util.List;
 
 public class DbTools{
 
-    final String url = "jdbc:mysql://ovh2.trebol-ie.com:3306/unifieddb";
-    final String user = "root";
-    final String pass = "Afuera-dam2";
+    final String url = /* Direccion de la base de datos aquí*/;
+    final String user = /* usuario*/;
+    final String pass = /* contraseña*/;
 
     Connection conn;
     public void dbConnection(){
