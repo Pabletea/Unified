@@ -35,13 +35,13 @@ Este proyecto está licenciado bajo la licencia [nombre de la licencia].
 
 **Tecnología:**
 
-* **[Lenguajes de programación]:** [Ejemplo: Swift, Kotlin]
+* **[Lenguajes de programación]:** [Kotlin,Java]
 * **[Frameworks]:** [Ejemplo: SwiftUI, Jetpack Compose]
 * **[Bibliotecas de encriptación]:** [Ejemplo: CryptoSwift, Sodium]
 
 **Próximas mejoras:**
 
-* **[Lista de características futuras]**
+* **Exportacion/importacion de claves**
 
 **Nota:**
 
