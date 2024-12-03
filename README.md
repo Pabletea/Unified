@@ -18,7 +18,6 @@ Unified es un gestor de contraseñas móvil en desarrollo, diseñado para proteg
 
 * **Lenguajes de programación:** Kotlin, Java
 * **Plataformas:** Android (próximamente iOS)
-* **Encriptación:** [Especificar el algoritmo de encriptación utilizado, si es posible]
 
 **Estado del proyecto:**
 
