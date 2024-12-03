@@ -28,19 +28,9 @@ Actualmente estamos trabajando en el instalador para las primeras versiones. ¡P
 
 Las contribuciones son bienvenidas. Consulta nuestra guía de contribución (próximamente) para obtener más información.
 
-**Licencia:**
 
-Este proyecto está licenciado bajo la licencia [nombre de la licencia].
 
-**¡Únete a nosotros en este emocionante proyecto!**
 
-[**Insertar aquí una imagen atractiva de la aplicación**]
-
-**¿Quieres probar Unified?** ¡Mantente atento a nuestras redes sociales para conocer las últimas novedades!
-
-[**Enlaces a tus redes sociales**]
-
-**[Enlace a la página del proyecto o a un repositorio público]**
 
 ### **Consideraciones adicionales:**
 
