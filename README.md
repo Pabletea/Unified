@@ -43,20 +43,3 @@ Este proyecto está licenciado bajo la licencia [nombre de la licencia].
 
 * **Exportacion/importacion de claves**
 
-**Nota:**
-
-* **Personaliza este README:** Adapta este README a las características específicas de tu aplicación, reemplazando los marcadores de posición con la información relevante.
-* **Añade capturas de pantalla:** Incluye capturas de pantalla de tu aplicación para mostrar su interfaz de usuario.
-* **Considera agregar una sección de preguntas frecuentes:** Resuelve las dudas más comunes de los usuarios.
-
-**¿Qué te parece este borrador?** ¿Hay algo que quieras modificar o agregar? Podemos trabajar juntos para crear un README que sea claro, conciso y atractivo para tus usuarios. 
-
-**Para una personalización aún mayor, por favor, proporciona la siguiente información:**
-
-* **Plataformas compatibles:** ¿En qué sistemas operativos funciona tu aplicación (iOS, Android, ambos)?
-* **Características únicas:** ¿Qué hace que tu aplicación sea diferente de otros gestores de contraseñas?
-* **Tecnologías específicas:** ¿Qué tecnologías concretas utilizaste para desarrollar la aplicación?
-* **Encriptación:** ¿Qué algoritmo de encriptación utilizas? ¿Qué tan segura es la encriptación?
-* **Sincronización:** ¿Cómo funciona la sincronización entre dispositivos? ¿Utiliza algún servicio en la nube?
-
-Con esta información adicional, podré crear un README aún más completo y detallado.
