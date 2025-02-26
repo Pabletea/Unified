@@ -28,13 +28,3 @@ Actualmente estamos trabajando en el instalador para las primeras versiones. ¡P
 Las contribuciones son bienvenidas. Consulta nuestra guía de contribución (próximamente) para obtener más información.
 
 
-
-
-
-### **Consideraciones adicionales:**
-
-* **Personaliza este README:** Adapta este README a las características específicas de tu aplicación, reemplazando los marcadores de posición con la información relevante.
-* **Actualizaciones frecuentes:** Mantén el README actualizado a medida que avances en el desarrollo.
-* **Sección de preguntas frecuentes:** Anticipa las preguntas que los usuarios puedan tener y proporciona respuestas concisas.
-* **Insignias:** Puedes agregar insignias de las tecnologías utilizadas o de la licencia para dar más información visual.
-* **Escudo de seguridad:** Si tienes un escudo de seguridad que indique el nivel de seguridad de tu aplicación, puedes incluirlo.
